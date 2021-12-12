@@ -3,7 +3,7 @@ package flink.experiments.length3
 import java.io.{BufferedReader, FileInputStream, InputStreamReader}
 import scala.collection.mutable
 
-object BruteForceValidate {
+object BruteForceInsertOnly {
     def graphBaseResult: mutable.Map[Int, mutable.HashSet[Int]] =
         mutable.HashMap()
 
