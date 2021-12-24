@@ -16,7 +16,10 @@ public class FlinkWindow {
         String createViewGraphWindowed = ResourcesUtil.readResourceFile("length3/Graph-Window-Hop.sql");
         tableEnv.executeSql(createViewGraphWindowed);
 
+        String createTablePath = ResourcesUtil.readResourceFile("length3/Path-Window-DDL.sql");
+        tableEnv.executeSql(createTablePath);
+
         String query = ResourcesUtil.readResourceFile("length3/Query-Window-Length3.sql");
-        tableEnv.executeSql(query).print();
+        tableEnv.sqlQuery(query).executeInsert("Path");
     }
 }

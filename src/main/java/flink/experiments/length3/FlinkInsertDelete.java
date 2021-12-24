@@ -15,9 +15,10 @@ public class FlinkInsertDelete {
         String createTableGraph = ResourcesUtil.readResourceFile("length3/Graph-InsertDelete-DDL.sql");
         tableEnv.executeSql(createTableGraph);
 
+        String createTablePath = ResourcesUtil.readResourceFile("length3/Path-InsertDelete-DDL.sql");
+        tableEnv.executeSql(createTablePath);
+
         String query = ResourcesUtil.readResourceFile("length3/Query-Length3.sql");
-        Table result = tableEnv.sqlQuery(query);
-        tableEnv.toRetractStream(result, Row.class).print();
-        env.execute();
+        tableEnv.sqlQuery(query).executeInsert("Path");
     }
 }
